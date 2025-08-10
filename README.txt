@@ -1,0 +1,1 @@
+This is a demo static website for a fictional squash gear shop. Open index.html in a browser to view.

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Squash Gear — RacketRack</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" stroke="white" stroke-width="4" fill="none"/><text x="50" y="58" text-anchor="middle" font-size="26" fill="white" font-family="sans-serif">SR</text></svg>
+      <h1>RacketRack — Squash Gear</h1>
+    </div>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search products..." aria-label="Search products">
+      <select id="sort" aria-label="Sort products">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="name-az">Name: A → Z</option>
+      </select>
+      <button id="cartBtn" aria-label="Open cart">Cart (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <main>
+    <aside class="filters" aria-labelledby="filters-label">
+      <h2 id="filters-label">Filters</h2>
+      <div class="filter-group">
+        <label><input type="checkbox" class="cat" value="Rackets" checked> Rackets</label>
+        <label><input type="checkbox" class="cat" value="Balls" checked> Balls</label>
+        <label><input type="checkbox" class="cat" value="Shoes" checked> Shoes</label>
+        <label><input type="checkbox" class="cat" value="Accessories" checked> Accessories</label>
+      </div>
+      <div class="filter-group">
+        <h3>Price</h3>
+        <label>Max: <input id="maxPrice" type="range" min="10" max="400" value="400"></label>
+        <div>€<span id="maxPriceVal">400</span></div>
+      </div>
+    </aside>
+
+    <section class="products" id="products" aria-live="polite">
+      <!-- Products injected by JS -->
+    </section>
+  </main>
+
+  <div id="cartPanel" class="panel" aria-hidden="true">
+    <button id="closeCart" class="close" aria-label="Close cart">✕</button>
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <div class="cart-summary">
+      <div>Subtotal: €<span id="cartSubtotal">0.00</span></div>
+      <button id="checkoutBtn">Checkout (mock)</button>
+    </div>
+  </div>
+
+  <template id="productTemplate">
+    <article class="product-card">
+      <div class="img-wrap" aria-hidden="true"></div>
+      <h3 class="product-name"></h3>
+      <div class="meta">
+        <span class="category"></span> • <span class="price"></span>
+      </div>
+      <p class="desc"></p>
+      <div class="actions">
+        <button class="add">Add to cart</button>
+        <button class="quick">Quick view</button>
+      </div>
+    </article>
+  </template>
+
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="close" aria-label="Close">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <small>Demo store with fictional products — no purchases are real.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
